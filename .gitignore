@@ -1,0 +1,5 @@
+/node_modules
+/.env
+
+contract_abi_A.json
+contract_abi_B.json
