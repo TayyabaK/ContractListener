@@ -23,7 +23,7 @@ async function LockedEventHandler_ChainA( amount, sender, date, event) {
   try {
     console.log("Emitted Locked Event")
 
-    const gasfee = 2 * amount/ 100;
+    const gasfee = BigInt(2) * amount/ BigInt(100);
     const transaction = await contract_B.TransferOnChain(BigInt(amount) , sender, gasfee)
     console.log(transaction)
 
@@ -48,7 +48,7 @@ async function TransferToContractEventHandler_ChainB(amount, sender, date, event
    try {
     console.log("Emitted TransferToContract Event")
 
-    const gasfee = 2 * amount/ 100;
+    const gasfee = BigInt(2) * amount/ BigInt(100);
     const transaction = await contract_A.Release(BigInt(amount) , sender, gasfee)
     console.log(transaction)
   }catch(e){
