@@ -23,8 +23,8 @@ async function LockedEventHandler_ChainA( amount, sender, date, event) {
   try {
     console.log("Emitted Locked Event")
 
-    const feeData = await provider_B.getFeeData();  
-    const transaction = await contract_B.TransferOnChain(BigInt(amount) , sender, feeData.gasPrice)
+    const gasfee = 2 * amount/ 100;
+    const transaction = await contract_B.TransferOnChain(BigInt(amount) , sender, gasfee)
     console.log(transaction)
 
   }catch(e){
@@ -47,9 +47,9 @@ async function TransferToContractEventHandler_ChainB(amount, sender, date, event
   //call release function on contract A
    try {
     console.log("Emitted TransferToContract Event")
-    
-    const feeData = await provider_A.getFeeData();
-    const transaction = await contract_A.Release(BigInt(amount) , sender, feeData.gasPrice)
+
+    const gasfee = 2 * amount/ 100;
+    const transaction = await contract_A.Release(BigInt(amount) , sender, gasfee)
     console.log(transaction)
   }catch(e){
     console.log(e)
